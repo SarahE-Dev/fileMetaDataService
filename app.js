@@ -11,6 +11,10 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(logger('dev'))
 
+app.get('/', function (req, res) {
+  res.sendFile(__dirname + '/views/index.html');
+});
+
 app.post('/api/fileanalyse', upload.single('upfile'), (req, res)=>{
   res.json({
     name: req.file.originalname,
@@ -22,9 +26,7 @@ app.post('/api/fileanalyse', upload.single('upfile'), (req, res)=>{
 
 
 
-app.get('/', function (req, res) {
-  res.sendFile(__dirname + '/views/index.html');
-});
+
 
 
 
