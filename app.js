@@ -6,6 +6,11 @@ const upload = multer({ dest: 'uploads/' })
 
 const app = express();
 
+app.use(cors());
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
+app.use(logger('dev'))
+
 app.post('/api/fileanalyse', upload.single('upfile'), (req, res)=>{
   res.json({
     name: req.file.originalname,
@@ -14,10 +19,7 @@ app.post('/api/fileanalyse', upload.single('upfile'), (req, res)=>{
   })
 })
 
-app.use(cors());
-app.use(express.json())
-app.use(express.urlencoded({extended: true}))
-app.use(logger('dev'))
+
 
 
 app.get('/', function (req, res) {
