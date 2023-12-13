@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const logger = require('morgan');
 const multer = require('multer');
-const upload = multer()
+const upload = multer({ dest: 'uploads/' })
 
 const app = express();
 
